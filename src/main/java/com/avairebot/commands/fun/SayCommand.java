@@ -115,14 +115,14 @@ public class SayCommand extends Command {
                     .queue(successMessage -> MessageFactory.deleteMessage(successMessage, 45, TimeUnit.SECONDS));
             });
 
-        context.delete().reason("AvaIre say command usage").queue(null, RestActionUtil.ignore);
+        context.delete().reason("Savitar say command usage").queue(null, RestActionUtil.ignore);
 
         return true;
     }
 
     private boolean handleNormalCommand(CommandMessage context, String[] args) {
         context.getMessageChannel().sendMessage(String.join(" ", args)).queue();
-        context.delete().reason("AvaIre say command usage").queue(null, RestActionUtil.ignore);
+        context.delete().reason("Savitar say command usage").queue(null, RestActionUtil.ignore);
 
         return true;
     }

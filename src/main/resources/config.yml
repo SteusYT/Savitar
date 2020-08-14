@@ -62,21 +62,21 @@ discord:
   # create one, once you have it, replace the text between the
   # quotes with your client id.
   #
-  clientId: 'YourBotClientIdShouldGoHere'
+  clientId: '743401435420557344'
 
   # This is your Discord application token, if you don't have a Discord
   # application, check the link above and follow the short guide to
   # create one, once you have it, replace the text between the
   # quotes with your token.
   #
-  token: 'YourBotTokenShouldGoHere'
+  token: 'NzQzNDAxNDM1NDIwNTU3MzQ0.XzUIiQ.W0Og26Crn9uHrw0UIQTFOOtMG7I'
 
   # This is the OAuth2 URL used for invite links, you should replace
   # the "<client_id>" with your Discord application client ID to
   # make the link valid so people can actually use it to invite
   # your bot to their server.
   #
-  oauth: 'https://discordapp.com/oauth2/authorize?&client_id=<client_id>&scope=bot&permissions=66186303'
+  oauth: 'https://discordapp.com/oauth2/authorize?&client_id=743401435420557344&scope=bot&permissions=66186303'
 
 #--------------------------------------------------------------------------
 # Database Information
@@ -203,7 +203,7 @@ system-prefix: ';'
 
 playing:
   - '!help'
-  - 'watching:avairebot.com'
+  - 'watching:https://discord.gg/WbdGDYg'
   - 'listening:%users% users'
   - 'playing:in %guilds% servers'
 
@@ -477,7 +477,7 @@ audio-ratelimit:
 #
 
 botAccess:
-  - '88739639380172800'
+  - '691610317301612565'
 
 #--------------------------------------------------------------------------
 # Sentry.io Error Logging
@@ -662,7 +662,7 @@ apiKeys:
   #
   # Get a key at: https://dialogflow.com/docs/reference/agent
   #
-  dialogflow: ''
+  dialogflow: 'AIzaSyCmi1qcoSN5r5Kj3X6eylL4h8nplRgweuI'
 
   # Meow API is a simple services that provides lots of cat pictures, the service
   # was custom built for Ava since the old cat picture services was having some

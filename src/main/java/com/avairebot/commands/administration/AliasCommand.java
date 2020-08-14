@@ -67,7 +67,7 @@ public class AliasCommand extends Command {
     public List<String> getExampleUsage(@Nullable Message message) {
         //noinspection ConstantConditions
         return Collections.singletonList(String.format(
-            "`:command !ava %srepeat **Website:** https://avairebot.com/`",
+            "`:command !ava %srepeat **Support Server:** discord.gg/Savitar`",
             message == null
                 ? CommandHandler.getCommand(AliasCommand.class).getCategory().getPrefix()
                 : generateCommandPrefix(message)
