@@ -68,8 +68,8 @@ public class VotePointsCommand extends SystemCommand {
     @Override
     public List<String> getExampleUsage() {
         return Arrays.asList(
-            "`:command give @Senither 50` - Give Senither 50 vote points.",
-            "`:command take @Senither 99` - Take 99 vote points from Senither."
+            "`:command give @Steus 50` - Give @Steus 50 vote points.",
+            "`:command take @Steus 99` - Take 99 vote points from @Steus."
         );
     }
 

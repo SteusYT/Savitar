@@ -51,7 +51,7 @@ public class InviteCommand extends Command {
 
     @Override
     public List<String> getUsageInstructions() {
-        return Collections.singletonList("`:command` - Gives you an invite link that can be used to invite AvaIre to servers.");
+        return Collections.singletonList("`:command` - Gives you an invite link that can be used to invite Savitar to servers.");
     }
 
     @Override
@@ -71,7 +71,7 @@ public class InviteCommand extends Command {
 
         context.makeInfo(context.i18n("message"))
             .set("oauth", avaire.getConfig().getString("discord.oauth"))
-            .set("note", note.set("edgeInvite", "https://avairebot.com/invite-cutting-edge").toString())
+            .set("note", note.set("edgeInvite", "https://discordapp.com/oauth2/authorize?&client_id=743401435420557344&scope=bot&permissions=66186303").toString())
             .queue();
         return true;
     }

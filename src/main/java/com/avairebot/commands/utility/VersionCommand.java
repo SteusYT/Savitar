@@ -51,7 +51,7 @@ public class VersionCommand extends Command {
 
     @Override
     public String getDescription() {
-        return "Displays the current version of Ava that is running. If the version is outdated the new version will be shown as well as what type of changes have been made.";
+        return "Displays the current version of Savitar that is running. If the version is outdated the new version will be shown as well as what type of changes have been made.";
     }
 
     @Override
@@ -81,7 +81,7 @@ public class VersionCommand extends Command {
     public boolean onCommand(CommandMessage context, String[] args) {
         SemanticVersion latestVersion = getLatestVersion();
         if (latestVersion == null) {
-            return sendErrorMessage(context, "Failed to fetch the latest version of AvaIre, try again later.");
+            return sendErrorMessage(context, "Failed to fetch the latest version of Savitar, try again later.");
         }
 
         String template = String.join("\n",
@@ -149,7 +149,7 @@ public class VersionCommand extends Command {
     private SemanticVersion getLatestVersion() {
         Object version = avaire.getCache().getAdapter(CacheType.FILE).remember("github.version", 1800, () -> {
             try {
-                return Jsoup.connect("https://raw.githubusercontent.com/avaire/avaire/master/build.gradle")
+                return Jsoup.connect("Failed to get latest version from github")
                     .execute().body().split("version = '")[1].split("'")[0];
             } catch (IOException e) {
                 AvaIre.getLogger().error("Failed to get latest version from github", e);
