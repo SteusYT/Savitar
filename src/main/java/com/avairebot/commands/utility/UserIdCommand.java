@@ -58,7 +58,7 @@ public class UserIdCommand extends Command {
     @Override
     public List<String> getExampleUsage() {
         return Arrays.asList(
-            "`:command @Senither`",
+            "`:command @Steus`",
             "`:command alexis`",
             "`:command 88739639380172800`"
         );

@@ -70,7 +70,7 @@ public class ModlogHistoryCommand extends Command {
     @Override
     public List<String> getExampleUsage() {
         return Collections.singletonList(
-            "`:command @Senither` - Displays all the bad things Senither has done."
+            "`:command @Steus` - Displays all the bad things Steus has done."
         );
     }
 

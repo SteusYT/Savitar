@@ -76,9 +76,9 @@ public class MuteCommand extends MuteableCommand {
     @Override
     public List<String> getExampleUsage() {
         return Arrays.asList(
-            "`:command @Senither Spams too much` - Mutes the user permanently.",
-            "`:command @Senither 30m Calm down` - Mutes the user for 30 minutes.",
-            "`:command @Senither 1d` - Mutes the user for 1 day with no reason."
+            "`:command @Steus Spams too much` - Mutes the user permanently.",
+            "`:command @Steus 30m Calm down` - Mutes the user for 30 minutes.",
+            "`:command @Steus 1d` - Mutes the user for 1 day with no reason."
         );
     }
 

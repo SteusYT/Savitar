@@ -35,6 +35,7 @@ import com.avairebot.blacklist.Blacklist;
 import com.avairebot.cache.CacheManager;
 import com.avairebot.cache.CacheType;
 import com.avairebot.chat.ConsoleColor;
+import com.avairebot.commands.Category;
 import com.avairebot.commands.CategoryDataContext;
 import com.avairebot.commands.CategoryHandler;
 import com.avairebot.commands.CommandHandler;
@@ -62,6 +63,7 @@ import com.avairebot.language.I18n;
 import com.avairebot.level.LevelManager;
 import com.avairebot.metrics.Metrics;
 import com.avairebot.middleware.*;
+import com.avairebot.middleware.global.IsCategoryEnabled;
 import com.avairebot.mute.MuteManager;
 import com.avairebot.plugin.PluginLoader;
 import com.avairebot.plugin.PluginManager;
@@ -77,6 +79,7 @@ import com.avairebot.utilities.AutoloaderUtil;
 import com.avairebot.vote.VoteManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.internal.LinkedTreeMap;
 import com.sedmelluq.discord.lavaplayer.jdaudp.NativeAudioSendFactory;
 import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration;
 import com.sedmelluq.discord.lavaplayer.tools.PlayerLibrary;
@@ -85,15 +88,17 @@ import io.sentry.SentryClient;
 import io.sentry.logback.SentryAppender;
 import lavalink.client.io.Link;
 import lavalink.client.player.LavalinkPlayer;
-import net.dv8tion.jda.bot.sharding.DefaultShardManagerBuilder;
-import net.dv8tion.jda.bot.sharding.ShardManager;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDAInfo;
-import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.entities.SelfUser;
-import net.dv8tion.jda.core.requests.RestAction;
-import net.dv8tion.jda.core.utils.SessionControllerAdapter;
-import net.dv8tion.jda.core.utils.cache.CacheFlag;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDAInfo;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.SelfUser;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.requests.RestAction;
+import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.api.sharding.ShardManager;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import net.dv8tion.jda.api.utils.SessionControllerAdapter;
+import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -261,6 +266,19 @@ public class AvaIre {
             AutoloaderUtil.load(Constants.PACKAGE_COMMAND_PATH, command -> CommandHandler.register((Command) command));
         }
         log.info(String.format("\tRegistered %s commands successfully!", CommandHandler.getCommands().size()));
+
+        log.info("Loading command category states");
+        Object commandCategoryStates = cache.getAdapter(CacheType.FILE).get("command-category.toggle");
+        if (commandCategoryStates != null) {
+            //noinspection SingleStatementInBlock,unchecked,unchecked
+            ((LinkedTreeMap<String, String>) commandCategoryStates).forEach((key, value) -> {
+                Category category = CategoryHandler.fromLazyName(key);
+                if (category != null) {
+                    IsCategoryEnabled.disableCategory(category, value);
+                    log.debug("{} has been disabled for \"{}\"", key, value);
+                }
+            });
+        }
 
         log.info("Registering jobs...");
         AutoloaderUtil.load(Constants.PACKAGE_JOB_PATH, job -> ScheduleHandler.registerJob((Job) job));
@@ -667,16 +685,22 @@ public class AvaIre {
     }
 
     private ShardManager buildShardManager() throws LoginException {
-        DefaultShardManagerBuilder builder = new DefaultShardManagerBuilder()
+        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.create(
+            getConfig().getString("discord.token"),
+            EnumSet.allOf(GatewayIntent.class)
+        )
             .setSessionController(new SessionControllerAdapter())
-            .setToken(getConfig().getString("discord.token"))
-            .setGame(Game.watching("my code start up..."))
+            .setActivity(Activity.watching("my code start up..."))
             .setBulkDeleteSplittingEnabled(false)
+            .setMemberCachePolicy(MemberCachePolicy.ALL)
             .setEnableShutdownHook(false)
+            .disableCache(CacheFlag.ACTIVITY)
             .setAutoReconnect(true)
-            .setAudioEnabled(true)
             .setContextEnabled(true)
-            .setDisabledCacheFlags(EnumSet.of(CacheFlag.GAME))
+            .setDisabledIntents(
+                GatewayIntent.DIRECT_MESSAGE_TYPING,
+                GatewayIntent.GUILD_MESSAGE_TYPING
+            )
             .setShardsTotal(settings.getShardCount());
 
         if (settings.getShards() != null) {

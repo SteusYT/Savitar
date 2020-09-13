@@ -73,7 +73,7 @@ public class PurgeCommand extends Command {
     public List<String> getExampleUsage() {
         return Arrays.asList(
             "`:command 56`",
-            "`:command 30 @Senither`"
+            "`:command 30 @Steus`"
         );
     }
 

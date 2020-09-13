@@ -1,10 +1,10 @@
 {
-    "name": "Savitar",
-    "description": "Savitar is a high quality Music bot, with moderation, interaction, search, administration commands, highly customizable and much more!",
+    "name": "AvaIre",
+    "description": "AvaIre is a high quality Music bot, with moderation, interaction, search, administration commands, highly customizable and much more!",
     "keywords": [
         "Heroku",
-        "Savitar",
-        "SavitarBot",
+        "AvaIre",
+        "AvaIreBot",
         "Discord Bot",
         "Entertainment",
         "Music",
@@ -32,7 +32,7 @@
     ],
     "env": {
         "GRADLE_TASK": {
-            "description": "Tells Heroku how to compile Savitar. Leave it as it, unless you know what your doing.",
+            "description": "Tells Heroku how to compile AvaIre. Leave it as it, unless you know what your doing.",
             "required": true,
             "value": "build"
         },

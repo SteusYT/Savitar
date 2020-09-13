@@ -23,21 +23,21 @@
 # or the bot can't read & write to it, then the feedback
 # command will simply not work.
 #
-feedback-channel: 743749190022332516
+feedback-channel: 324301839170273280
 
 # The changelog channel is the text channel used by the changelog command,
 # the command will read messages from the channel and then use those as
 # changelog messages, if the bot is bot can't read messages from
 # the channel, the changelog command will simply not work.
 #
-changelog-channel: 743749190022332516
+changelog-channel: 570225187661021214
 
 # The activity log channel is used by Ava to log server activity, like
 # when the bot joins or leaves a server, if the channel doesn't exist,
 # or the bot can't read & write to it, then no activity log messages
 # will be sent.
 #
-activity-log-channel: 743748343871701012
+activity-log-channel: 284114819278438401
 
 # The bot admin exception role is used within Ava to allow users with
 # the role matching the ID below to invoke certain system commands,

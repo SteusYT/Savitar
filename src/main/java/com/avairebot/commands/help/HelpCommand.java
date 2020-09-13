@@ -55,7 +55,7 @@ public class HelpCommand extends Command {
 
     @Override
     public String getDescription() {
-        return "Tells you about what commands Savitar has, what they do, and how you can use them.";
+        return "Tells you about what commands Savitar has, what they do, and how you can use them. join the support server :https://discord.gg/AjZt3j";
     }
 
     @Override

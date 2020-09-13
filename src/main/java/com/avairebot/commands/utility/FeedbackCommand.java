@@ -58,7 +58,7 @@ public class FeedbackCommand extends Command {
 
     @Override
     public String getDescription() {
-        return "Send feedback about Ava back to the developers and the staff team, any message passed to the command will be sent in the [#feedback](https://avairebot.com/support) channel on the [AvaIre Central](https://avairebot.com/support) server.";
+        return "Send feedback about Savitar back to the developers and the staff team, any message passed to the command will be sent in the [#feedback](https://discord.gg/WbdGDYgt) channel on the [Savitar Central](https://discord.gg/WbdGDYg) server.";
     }
 
     @Override

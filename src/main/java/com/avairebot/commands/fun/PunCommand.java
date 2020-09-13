@@ -124,7 +124,7 @@ public class PunCommand extends Command {
     private Request makeRequest(CommandMessage context, boolean withSearch) {
         return RequestFactory.makeGET("https://icanhazdadjoke.com/" + (withSearch ? "search" : ""))
             .addHeader("Accept", "application/json")
-            .addHeader("User-Agent", String.format("AvaIre Bot (ID:%s, GitHub:https://github.com/avaire/avaire)",
+            .addHeader("User-Agent", String.format("Savitar Bot (ID:%s, GitHub:https://github.com/SteusYT/Savitar)",
                 context.getJDA().getSelfUser().getId()
             ));
     }

@@ -66,7 +66,7 @@ public class KickCommand extends Command {
 
     @Override
     public List<String> getExampleUsage() {
-        return Collections.singletonList("`:command @Senither Spamming things`");
+        return Collections.singletonList("`:command @Steus Spamming things`");
     }
 
     @Override

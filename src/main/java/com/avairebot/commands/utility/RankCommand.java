@@ -92,12 +92,12 @@ public class RankCommand extends Command {
     public List<String> getUsageInstructions() {
         return Arrays.asList(
             "`:command` - Displays your rank, level, xp and other stuff",
-            "`:command @Senither` - Displays Senither's rank, level, xp...");
+            "`:command @Steus` - Displays Steus's rank, level, xp...");
     }
 
     @Override
     public List<String> getExampleUsage() {
-        return Collections.singletonList("`:command @Senither`");
+        return Collections.singletonList("`:command @Steus`");
     }
 
     @Override
@@ -224,8 +224,8 @@ public class RankCommand extends Command {
         DatabaseProperties properties
     ) {
         MessageFactory.makeEmbeddedMessage(context.getChannel(), Color.decode("#E91E63"))
-            .setAuthor(author.getName(), "https://avairebot.com/leaderboard/" + context.getGuild().getId(), author.getEffectiveAvatarUrl())
-            .setFooter("https://avairebot.com/leaderboard/" + context.getGuild().getId())
+            .setAuthor(author.getName(), "https://bot.Savitar.gq" + context.getGuild().getId(), author.getEffectiveAvatarUrl())
+            .setFooter("https://bot.Savitar.gq/" + context.getGuild().getId())
             .addField(context.i18n("fields.rank"), score, true)
             .addField(context.i18n("fields.level"), NumberUtil.formatNicely(level), true)
             .addField(context.i18n("fields.experience"), (experience - zeroExperience - 100 < 0 ? "0" : context.i18n("fields.total",
